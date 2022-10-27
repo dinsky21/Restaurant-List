@@ -1,21 +1,30 @@
-<div class="container py-5">
+<div class="container py-3">
   <div class="text-center">
-    <h1 class="mb-4">{{movie.title}}</h1>
+    <h1 class="mb-4">{{restaurant.title}}</h1>
+
     <img
       class="rounded mb-4"
-      src="https://movie-list.alphacamp.io/posters/{{movie.image}}"
+      src="{{restaurant.image}}"
       alt="Card image cap"
       style="max-height: 300px;"
     />
   </div>
   <div class="row">
     <div class="col-12 col-md-10 col-lg-8 mx-auto">
-      <p class="text-secondary mb-1">
-        <strong>release date:</strong>
-        {{movie.release_date}}
+      <p class="text-secondary text-center mb-1"><i
+          class="fas fa-utensils pr-2"
+        ></i>
+        {{restaurant.category}}</p>
+      <p class="text-center mb-1">
+        <strong>Tel:</strong>
+        {{restaurant.phone}}
       </p>
-      <p>
-        {{movie.description}}
+      <p class="text-center mb-1">
+        Location:
+        {{restaurant.location}}
+      </p>
+      <p class="text-center mb-1">
+        {{restaurant.description}}
       </p>
     </div>
   </div>

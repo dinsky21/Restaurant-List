@@ -16,15 +16,17 @@ app.use(express.static("public"));
 
 // routes setting
 app.get("/", (req, res) => {
-  res.render("index", { restaurants: restaurantList.results }); 
+  res.render("index", { restaurants: restaurantList.results });
 });
 
-// //利用動態路由，在req.params中取得點擊的電影ID，在利用ID去資料庫中找到資料並呈現在show.handlbars網頁中
-// app.get("/movies/:movieID", (req, res) => {
-//   let movieID = req.params.movieID;
-//   let movie = movieList.results.find((m) => m.id === Number(movieID));
-//   res.render("show", { movie: movie });
-// });
+//利用動態路由，在req.params中取得點擊的電影ID，在利用ID去資料庫中找到資料並呈現在show.handlbars網頁中
+app.get("/restaurants/:RestaurantID", (req, res) => {
+  let RestaurantID = req.params.RestaurantID;
+  let restaurant = restaurantList.results.find(
+    (r) => r.id === Number(RestaurantID)
+  );
+  res.render("show", { restaurant: restaurant });
+});
 
 // //同樣利用動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
 // app.get("/search", (req, res) => {
