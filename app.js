@@ -30,11 +30,12 @@ app.get("/restaurants/:RestaurantID", (req, res) => {
 
 //動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
 app.get("/search", (req, res) => {
-  let keyword = req.query.keyword;
+  let keyword = req.query.keyword.trim();
   let restaurants = restaurantList.results.filter((r) =>
     r.name.toLowerCase().includes(keyword.toLowerCase())
   );
-  if (restaurants == true) {
+
+  if (restaurants.length == 1 || keyword == "") {
     res.render("index", { restaurants: restaurants, keyword: keyword });
   } else {
     res.render("no_results");
