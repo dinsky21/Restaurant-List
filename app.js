@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   res.render("index", { restaurants: restaurantList.results });
 });
 
-//利用動態路由，在req.params中取得點擊的電影ID，在利用ID去資料庫中找到資料並呈現在show.handlbars網頁中
+//動態路由呈現給予show.handlebars對應的資訊
 app.get("/restaurants/:RestaurantID", (req, res) => {
   let RestaurantID = req.params.RestaurantID;
   let restaurant = restaurantList.results.find(
@@ -28,14 +28,14 @@ app.get("/restaurants/:RestaurantID", (req, res) => {
   res.render("show", { restaurant: restaurant });
 });
 
-// //同樣利用動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
-// app.get("/search", (req, res) => {
-//   let keyword = req.query.keyword;
-//   let movies = movieList.results.filter((m) =>
-//     m.title.toLowerCase().includes(keyword.toLowerCase())
-//   );
-//   res.render("index", { movies: movies, keyword: keyword });
-// });
+//動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
+app.get("/search", (req, res) => {
+  let keyword = req.query.keyword;
+  let restaurants = restaurantList.results.filter((r) =>
+    r.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+  res.render("index", { restaurants: restaurants, keyword: keyword });
+});
 
 // start and listen on the Express server
 app.listen(port, () => {
