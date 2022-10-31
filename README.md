@@ -22,7 +22,7 @@
    ```bash
    The express is running on localhost:3000
    ```
-5. 若需結束網站，請於tirminal按下crtl + c即可
+5. 若需結束local hosting，請於tirminal內按下crtl + c即可
      
 
 ## 開發工具
