@@ -7,26 +7,23 @@
 2. 點擊該餐廳可取得詳細資訊
 ## 開始使用
 1. 請確認已安裝 node.js 與 npm
-2. clone 此專案至本地
-3. 在本地開啟之後，透過終端機進入資料夾:
+2. 下載或clone 此專案至本地資料夾
+    ```bash
+   git clone https://github.com/dinsky21/Restaurant-List.git
+   ```
+3. 若要起動網站，使用teminal於該資料夾內執行
 
    ```bash
-   cd 資料夾名稱
+   npm run dev
    ```
 
-   ```bash
-   npm install
-   ```
-
-   ```bash
-   nodemon app.js
-   ```
-
-4. 若看見下方訊息則代表順利運行，打開瀏覽器輸入網址 localhost:3000 可開始使用
+4. 若看見下方訊息則代表網站順利運行，打開瀏覽器輸入網址 localhost:3000 可開始使用
 
    ```bash
    The express is running on localhost:3000
    ```
+5. 若需結束網站，請於tirminal按下crtl + c即可
+     
 
 ## 開發工具
 - node.js 16.17.0
