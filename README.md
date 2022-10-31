@@ -1,6 +1,5 @@
 # Restaurant List
-# restaurant_list
-![餐廳清單]()
+![餐廳清單](img/screen_shot.JPG)
 ## 介紹
 可利用關鍵字搜尋餐廳名稱及類別，點擊各餐廳可得知相關詳細資訊
 ## 功能
@@ -23,14 +22,15 @@
    nodemon app.js
    ```
 
-4. 若看見此行訊息則代表順利運行，打開瀏覽器輸入以下網址
+4. 若看見下方訊息則代表順利運行，打開瀏覽器輸入網址 localhost:3000 可開始使用
 
    ```bash
    The express is running on localhost:3000
    ```
 
 ## 開發工具
-- node.js 16.15.0
-- Express 4.16.4
-- Express-Handlebars 6.0.6
-- Bootstrap 5.2.0
+- node.js 16.17.0
+- Express 4.18.2
+- Express-Handlebars 3.0.0
+- Bootstrap 5.1.3
+- Font Awesome 5.8.1
