@@ -4,6 +4,7 @@ const app = express()
 const mongoose = require('mongoose')
 const restaurantList = require('./models/restaurant')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -39,6 +40,42 @@ app.get('/', (req, res) => {
     .lean()
     .then((restaurants) => res.render('index', { restaurants })) // 將資料傳給 index 樣板
     .catch((error) => console.error(error))
+})
+// page for create new todo
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.post('/restaurants', (req, res) => {
+  const {
+    name,
+    name_en,
+    category,
+    image,
+    location,
+    phone,
+    google_map,
+    rating,
+    description,
+  } = req.body
+
+  return restaurantList
+    .create({
+      name,
+      name_en,
+      category,
+      image,
+      location,
+      phone,
+      google_map,
+      rating,
+      description,
+    })
+    .then(() => res.redirect('/'))
+    .catch((error) => console.log(error))
 })
 
 // 動態路由呈現給予show.handlebars對應的資訊
