@@ -1,10 +1,9 @@
-// require packages used in the project
+require('dotenv').config({ override: true })
 const express = require('express')
 const app = express()
-const port = 3000
-const restaurantList = require('./restaurant.json').results
-const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const restaurantList = require('./models/restaurant')
+const exphbs = require('express-handlebars')
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -33,33 +32,42 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 // routes setting
+// index page
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList })
+  restaurantList
+    .find()
+    .lean()
+    .then((restaurants) => res.render('index', { restaurants })) // 將資料傳給 index 樣板
+    .catch((error) => console.error(error))
 })
 
 // 動態路由呈現給予show.handlebars對應的資訊
-app.get('/restaurants/:RestaurantID', (req, res) => {
-  const RestaurantID = req.params.RestaurantID
-  const restaurant = restaurantList.find((r) => r.id === Number(RestaurantID))
-  res.render('show', { restaurant })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+
+  restaurantList
+    .findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch((error) => console.error(error))
 })
 
-// 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword.trim().toLowerCase()
-  const restaurants = restaurantList.filter(
-    (r) =>
-      r.name.toLowerCase().includes(keyword) || r.category.includes(keyword)
-  )
+// // 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
+// app.get('/search', (req, res) => {
+//   const keyword = req.query.keyword.trim().toLowerCase()
+//   const restaurants = restaurantList.filter(
+//     (r) =>
+//       r.name.toLowerCase().includes(keyword) || r.category.includes(keyword)
+//   )
 
-  if (restaurants.length >= 1 || keyword === '') {
-    res.render('index', { restaurants, keyword })
-  } else {
-    res.render('no_results')
-  }
-})
+//   if (restaurants.length >= 1 || keyword === '') {
+//     res.render('index', { restaurants, keyword })
+//   } else {
+//     res.render('no_results')
+//   }
+// })
 
 // start and listen on the Express server
-app.listen(port, () => {
-  console.log(`Express is listening on localhost:${port}`)
+app.listen(3000, () => {
+  console.log(`Express is listening on localhost:3000`)
 })

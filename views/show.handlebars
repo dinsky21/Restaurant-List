@@ -1,36 +1,36 @@
-<div class="container py-5">
-  <div class="text-center">
-    <h2 class="mb-4">{{restaurant.name}}</h2>
+<div class='container py-5'>
+  <div class='text-center'>
+    <h2 class='mb-4'>{{restaurant.name}}</h2>
 
     <img
-      class="rounded mb-4"
-      src="{{restaurant.image}}"
-      alt="Card image cap"
-      style="max-height: 300px;"
+      class='rounded mb-4'
+      src='{{restaurant.image}}'
+      alt='Card image cap'
+      style='max-height: 300px;'
     />
   </div>
-  <div class="row">
-    <div class="col-12 col-md-10 col-lg-8 mx-auto">
-      <p class="text-secondary text-center mb-1"><i
-          class="fas fa-utensils pr-2"
+  <div class='row'>
+    <div class='col-12 col-md-10 col-lg-8 mx-auto'>
+      <p class='text-secondary text-center mb-1'><i
+          class='fas fa-utensils pr-2'
         ></i>
         {{restaurant.category}}</p>
-      <p class="text-center mb-1">
+      <p class='text-center mb-1'>
         <strong>Tel:</strong>
         {{restaurant.phone}}
       </p>
-      <p class="text-center mb-1">
+      <p class='text-center mb-1'>
         Location:
         {{restaurant.location}}
         <a
-          href="{{restaurant.google_map}}"
-          class="text-secondary"
-          target="_blank"
+          href='{{restaurant.google_map}}'
+          class='text-secondary'
+          target='_blank'
         >
-          <i class="fas fa-location-arrow"></i>
+          <i class='fas fa-location-arrow'></i>
         </a>
       </p>
-      <p class="text-center mb-1">
+      <p class='text-center mb-1'>
         {{restaurant.description}}
       </p>
     </div>
