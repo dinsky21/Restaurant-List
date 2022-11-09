@@ -89,6 +89,16 @@ app.get('/restaurants/:id', (req, res) => {
     .catch((error) => console.error(error))
 })
 
+// 處理edit
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  restaurantList
+    .findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch((error) => console.log(error))
+})
+
 // // 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
 // app.get('/search', (req, res) => {
 //   const keyword = req.query.keyword.trim().toLowerCase()

@@ -26,11 +26,9 @@ db.once('open', () => {
       location: restaurantList[i].location,
       phone: restaurantList[i].phone,
       google_map: restaurantList[i].google_map,
-      rating: restaurantList[i].rating,
       description: restaurantList[i].description,
-      name: restaurantList[i].name,
+      rating: restaurantList[i].rating,
     })
   }
   console.log('done')
-  console.log(process.env.MONGODB_URI)
 })
