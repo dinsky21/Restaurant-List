@@ -99,20 +99,46 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch((error) => console.log(error))
 })
 
-// // 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword.trim().toLowerCase()
-//   const restaurants = restaurantList.filter(
-//     (r) =>
-//       r.name.toLowerCase().includes(keyword) || r.category.includes(keyword)
-//   )
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
 
-//   if (restaurants.length >= 1 || keyword === '') {
-//     res.render('index', { restaurants, keyword })
-//   } else {
-//     res.render('no_results')
-//   }
-// })
+  restaurantList
+    .findByIdAndUpdate(id, req.body)
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch((error) => console.log(error))
+})
+
+// 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim().toLowerCase()
+
+  restaurantList
+    .find()
+    .lean()
+    .then((restaurant) => {
+      const restaurants = restaurant.filter(
+        (r) =>
+          r.name.toLowerCase().includes(keyword) || r.category.includes(keyword)
+      )
+
+      if (restaurants.length >= 1 || keyword === '') {
+        res.render('index', { restaurants, keyword })
+      } else {
+        res.render('no_results')
+      }
+    })
+    .catch((error) => console.log(error))
+})
+
+// 處理delete
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+
+  restaurantList
+    .findByIdAndRemove(id)
+    .then(() => res.redirect(`/`))
+    .catch((error) => console.log(error))
+})
 
 // start and listen on the Express server
 app.listen(3000, () => {

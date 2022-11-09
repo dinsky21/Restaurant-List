@@ -1,4 +1,4 @@
-<form class='m-5' action='/restaurants/{{todo._id}}/edit' method='POST'>
+<form class='m-5' action='/restaurants/{{restaurant._id}}/edit' method='POST'>
   <input
     type='text'
     placeholder='name'
@@ -54,4 +54,5 @@
     value='{{restaurant.description}}'
   />
   <button type='submit'>Submit change</button>
+  <a href='/'>Back</a>
 </form>
