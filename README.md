@@ -16,18 +16,22 @@
     ```bash
    git clone https://github.com/dinsky21/Restaurant-List.git
    ```
-3. 若要啟網站，使用teminal於該資料夾內執行
+3. 請先執行以下指令，建立種子資料
+    ```bash
+    npm run seed
+    ```
+4. 若要啟網站，使用teminal於該資料夾內執行
 
    ```bash
    npm run dev
    ```
 
-4. 若看見下方訊息則代表網站順利運行，打開瀏覽器輸入網址 localhost:3000 可開始使用
+5. 若看見下方訊息則代表網站順利運行，打開瀏覽器輸入網址 localhost:3000 可開始使用
 
    ```bash
    The express is running on localhost:3000
    ```
-5. 若需結束local hosting，請於tirminal內按下crtl + c即可
+6. 若需結束local hosting，請於tirminal內按下crtl + c即可
      
 
 ## 開發工具
