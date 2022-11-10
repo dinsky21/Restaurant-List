@@ -1,17 +1,22 @@
 # Restaurant List
 ![餐廳清單](img/screen_shot.JPG)
+
 ## 介紹
 可利用關鍵字搜尋餐廳名稱及類別，點擊各餐廳可得知相關詳細資訊
+
 ## 功能
 1. 輸入關鍵字可搜尋餐廳名稱可篩選出相關餐廳
 2. 點擊該餐廳可取得餐廳詳細資訊
+3. 可編輯餐廳資訊
+4. 可新增餐廳
+
 ## 開始使用
 1. 請確認已安裝 node.js 與 npm (使用版本請見文件最下方)
 2. 下載或clone 此專案至本地資料夾
     ```bash
    git clone https://github.com/dinsky21/Restaurant-List.git
    ```
-3. 若要起動網站，使用teminal於該資料夾內執行
+3. 若要啟網站，使用teminal於該資料夾內執行
 
    ```bash
    npm run dev
@@ -31,3 +36,5 @@
 - Express-Handlebars 3.0.0
 - Bootstrap 5.1.3
 - Font Awesome 5.8.1
+- mongoose 6.7.0
+- dotenv 16.0.3
