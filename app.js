@@ -11,7 +11,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-
 // 取得資料庫連線狀態
 const db = mongoose.connection
 // 連線異常
@@ -25,29 +24,27 @@ db.once('open', () => {
 
 // 射鏡樣本引擎
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-
 // 透過這個方法告訴 Express 說要設定的 view engine 是 handlebars。
 app.set('view engine', 'handlebars')
-
 // setting static files(讓靜態的static files如css, js檔案會先被找到並執行)
 app.use(express.static('public'))
 
-// routes setting
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // index page
 app.get('/', (req, res) => {
   restaurantList
     .find()
     .lean()
-    .then((restaurants) => res.render('index', { restaurants })) // 將資料傳給 index 樣板
+    .then((restaurants) => res.render('index', { restaurants }))
     .catch((error) => console.error(error))
 })
-// page for create new todo
+
+// create new restaurant
 app.get('/restaurants/new', (req, res) => {
   res.render('new')
 })
-
-// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.post('/restaurants', (req, res) => {
   const {
@@ -78,7 +75,7 @@ app.post('/restaurants', (req, res) => {
     .catch((error) => console.log(error))
 })
 
-// 動態路由呈現給予show.handlebars對應的資訊
+// Detail single page
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
 
@@ -89,7 +86,7 @@ app.get('/restaurants/:id', (req, res) => {
     .catch((error) => console.error(error))
 })
 
-// 處理edit
+// edit function
 app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   restaurantList
@@ -108,7 +105,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch((error) => console.log(error))
 })
 
-// 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
+// search function 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim().toLowerCase()
 
@@ -130,7 +127,7 @@ app.get('/search', (req, res) => {
     .catch((error) => console.log(error))
 })
 
-// 處理delete
+// delete function
 app.post('/restaurants/:id/delete', (req, res) => {
   const id = req.params.id
 

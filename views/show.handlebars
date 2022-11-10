@@ -33,15 +33,23 @@
       <p class='text-center mb-1'>
         {{restaurant.description}}
       </p>
-      <li>
-
-        <a href='/restaurants/{{restaurant._id}}/edit'>Edit</a>
-        <a href='/'>Back</a>
+      <li class='text-center mt-3'>
+        <a
+          class='col-md-2 btn btn-major btn-sm m-1 p-2 fw-bold'
+          href='/restaurants/{{restaurant._id}}/edit'
+        >Edit</a>
+        <a
+          class='col-md-2 btn btn-major btn-sm m-1 p-2 fw-bold'
+          href='/'
+        >Back</a>
         <form
           action='/restaurants/{{restaurant._id}}/delete'
           method='post'
           style='display: inline;'
-        ><button type='submit'>Delete</button></form>
+        ><button
+            class='col-md-2 btn btn-major btn-sm m-1 p-2 fw-bold'
+            type='submit'
+          >Delete</button></form>
       </li>
     </div>
   </div>
