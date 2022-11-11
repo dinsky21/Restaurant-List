@@ -96,6 +96,10 @@ li {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 992px) {
   .card img {
     height: 115px;
