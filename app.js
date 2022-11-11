@@ -47,30 +47,8 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
-  const {
-    name,
-    name_en,
-    category,
-    image,
-    location,
-    phone,
-    google_map,
-    rating,
-    description,
-  } = req.body
-
   return restaurantList
-    .create({
-      name,
-      name_en,
-      category,
-      image,
-      location,
-      phone,
-      google_map,
-      rating,
-      description,
-    })
+    .create(req.body)
     .then(() => res.redirect('/'))
     .catch((error) => console.log(error))
 })
