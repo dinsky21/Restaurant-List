@@ -20,6 +20,7 @@ db.once('open', () => {
       google_map: restaurantList[i].google_map,
       description: restaurantList[i].description,
       rating: restaurantList[i].rating,
+      area: restaurantList[i].area,
     })
   }
   console.log('done')
