@@ -24,5 +24,6 @@ router.get('/', (req, res) => {
     })
     .catch((error) => console.log(error))
 })
+
 // 匯出路由器
 module.exports = router

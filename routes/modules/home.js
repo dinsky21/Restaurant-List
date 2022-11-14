@@ -47,6 +47,5 @@ router.get('/sort_by_location', (req, res) => {
     .then((restaurants) => res.render('index', { restaurants }))
     .catch((error) => console.error(error))
 })
-
 // 匯出路由器
 module.exports = router
