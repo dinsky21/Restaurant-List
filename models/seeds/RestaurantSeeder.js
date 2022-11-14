@@ -1,7 +1,5 @@
-const Restaurant = require('../Restaurant') // 載入 restaurant model
+const Restaurant = require('../restaurant') // 載入 restaurant model
 const restaurantList = require('../../restaurant.json').results
-
-// 加入這段 code, 僅在非正式環境時, 使用 dotenv
 
 const db = require('../../config/mongoose')
 
