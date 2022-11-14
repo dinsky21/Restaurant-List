@@ -1,39 +1,53 @@
 <!-- ./views/index.handlebars -->
-<div class="container mt-5">
+<div class="container mt-5 justify-content-center">
 
   <!-- search bar -->
-  <div class="container search-bar">
-    <div class="search-bar-outer">
-      <div class="search-bar-inner">
-        <form action="/search">
-          <h4 class="mb-2">尋找餐廳：</h4>
-          <div class="input-group">
-            <input
-              type="text"
-              name="keyword"
-              class="form-control"
-              placeholder="輸入餐廳、分類"
-              aria-label="Restaurant Name..."
-              value="{{keyword}}"
-              aria-describedby="search-button"
-            />
-            <div class="input-group-append">
-              <button class="btn btn-major" type="submit" id="search-button">
-                <i class="fa-solid fa-magnifying-glass py-1"></i>
-              </button>
+  <div class="container search-bar col-md-8">
+    <div class="row">
+      <div class="search-bar-outer">
+        <div class="search-bar-inner d-flex justify-content-around align-items-end">
+          <form action="/search" class="col-md-8 ms-4">
+            <h4 class="mb-2">尋找餐廳：</h4>
+            <div class="input-group">
+              <input
+                type="text"
+                name="keyword"
+                class="form-control"
+                placeholder="輸入餐廳、分類"
+                aria-label="Restaurant Name..."
+                value="{{keyword}}"
+                aria-describedby="search-button"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-major" type="submit" id="search-button">
+                  <i class="fa-solid fa-magnifying-glass py-1"></i>
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form> 
+          <div class="dropdown mb-3">
+              <button class="btn btn-outline-major dropdown-toggle mx-3" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <li><button class="dropdown-item" type="button">A->Z</button></li>
+                <li><button class="dropdown-item" type="button">Z->A</button></li>
+                <li><button class="dropdown-item" type="button">類別</button></li>
+                <li><button class="dropdown-item" type="button">地區</button></li>
+              </ul>
+          </div>        
+        </div>
       </div>
     </div>
   </div>
+    
 
 <!-- restaurant list -->
 
 <div class="container mt-4">
-  <div class="row justify-content-center mb-4">
+  {{!-- <div class="row justify-content-center mb-4">
     <a class="btn btn-outline-major col-md-7" href='/restaurants/new'><i class="fa-solid fa-plus px-1"></i>Create New Restaurant</a>
-  </div>
+  </div> --}}
   
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
@@ -41,7 +55,7 @@
         {{#each restaurants}}
           {{!-- <a href="/restaurants/{{this._id}}" class="text-secondary"> --}}
             <div class="card m-2 p-0">
-               <span class="position-absolute top-0 end-0 badge rounded-pill bg-danger fs-6 m-1">
+              <span class="position-absolute top-0 end-0 badge rounded-pill bg-danger fs-6 m-1">
                 {{this.rating}}<i class="fa-regular fa-star fa-xs px-1"></i></span>
               <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
               
@@ -53,12 +67,12 @@
                 </div>
               </div>
               <div class="card-footer m-0 px-2">
-                <ul>
+                <ul id="card">
                   <li>
                     <a class="btn btn-outline-major btn-sm" href='/restaurants/{{this._id}}/edit'>Edit</a>
                     <a class="btn btn-outline-major btn-sm" href='/restaurants/{{this._id}}'>Detail</a>
                     <form
-                    action='/restaurants/{{this._id}}/delete'
+                    action='/restaurants/{{this._id}}?_method=DELETE'
                     method='post'
                     style='display: inline;'
                     ><button class="btn btn-outline-major btn-sm"type='submit'>Delete</button></form>

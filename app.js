@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const restaurantList = require('./models/restaurant')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 // 引用路由器
 const routes = require('./routes')
 require('./config/mongoose')
@@ -12,6 +12,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 // setting static files(讓靜態的static files如css, js檔案會先被找到並執行)
 app.use(express.static('public'))
+
+app.use(methodOverride('_method'))
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))

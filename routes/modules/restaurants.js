@@ -35,7 +35,7 @@ router.get('/:id/edit', (req, res) => {
     .catch((error) => console.log(error))
 })
 
-router.post('/:id/edit', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
 
   restaurantList
@@ -45,7 +45,7 @@ router.post('/:id/edit', (req, res) => {
 })
 
 // delete function
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id', (req, res) => {
   const id = req.params.id
 
   restaurantList

@@ -4,7 +4,7 @@ const router = express.Router()
 const restaurantList = require('../../models/restaurant')
 
 // search function 動態路由，在req.query(<form>才有)中擷取keyword，再搭配filter, includes的功能呈現搜尋結果
-router.get('/search', (req, res) => {
+router.get('/', (req, res) => {
   const keyword = req.query.keyword.trim().toLowerCase()
 
   restaurantList
