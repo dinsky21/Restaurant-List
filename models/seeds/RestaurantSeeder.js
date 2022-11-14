@@ -1,15 +1,9 @@
-require('dotenv').config({ override: true })
-const mongoose = require('mongoose')
 const Restaurant = require('../Restaurant') // 載入 restaurant model
 const restaurantList = require('../../restaurant.json').results
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-const db = mongoose.connection
+const db = require('../../config/mongoose')
 
 db.on('error', () => {
   console.log('mongodb error!')
