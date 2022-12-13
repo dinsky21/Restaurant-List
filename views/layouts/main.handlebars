@@ -31,7 +31,11 @@
             我的餐廳清單
           </a>
           <li class='nav-item'>
-            <a class='btn btn-outline-major' href='/users/logout'>Logout</a>
+            {{#if isAuthenticated}}
+              <a class='btn btn-outline-major' href='/users/logout'>Logout</a>
+            {{else}}
+              <a class='btn btn-outline-major' href='/users/login'>Login</a>
+            {{/if}}
           </li>
 
         </div>
