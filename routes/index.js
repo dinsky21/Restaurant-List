@@ -8,10 +8,13 @@ const restaurants = require('./modules/restaurants')
 const search = require('./modules/search')
 const users = require('./modules/users')
 
+//掛載authenticator middleware
+const { authenticator } = require('../middleware/auth')
+
 // 將網址結構符合 / 字串的 request 導向 home 模組
-router.use('/restaurants', restaurants)
-router.use('/search', search)
+router.use('/restaurants', authenticator, restaurants)
+router.use('/search', authenticator, search)
 router.use('/users', users)
-router.use('/', home)
+router.use('/', authenticator, home)
 // 匯出路由器
 module.exports = router
