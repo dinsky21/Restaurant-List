@@ -6,7 +6,7 @@
     <div class="row">
       <div class="search-bar-outer">
         <div class="search-bar-inner d-flex justify-content-around align-items-end">
-          <form action="/search" class="col-md-8 ms-4">
+          <form action="/search" class="col-md-6 ms-4">
             <h4 class="mb-2">尋找餐廳：</h4>
             <div class="input-group">
               <input
@@ -25,7 +25,7 @@
               </div>
             </div>
           </form> 
-          <div class="dropdown mb-3">
+            <div class="dropdown mb-3">
               <button class="btn btn-outline-major dropdown-toggle mx-3" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort by
               </button>
@@ -35,8 +35,13 @@
                 <li><a href="/sort_by_category" class="dropdown-item" type="button">類別</a></li>
                 <li><a href="/sort_by_location" class="dropdown-item" type="button">地區</a></li>
               </ul>
-          </div>        
-        </div>
+            </div> 
+            <div>
+              <a class='btn btn-outline-major mb-3' href='/restaurants/new'><i
+                class='fa-solid fa-plus pe-1'></i>add New Restaurant</a>
+            </div>      
+          </div> 
+        
       </div>
     </div>
   </div>
